@@ -11,17 +11,16 @@ import createSagaMiddleware from "redux-saga";
 const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
- 
   rootReducer,
   applyMiddleware(sagaMiddleware)
 );
 sagaMiddleware.run(watcherSaga);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={storeInstance}>
       <App />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );

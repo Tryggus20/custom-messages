@@ -28,11 +28,11 @@ function App() {
     const hour = parseInt(formatter.format(checkInDate), 10);
     let greeting;
     if (hour < 12) {
-      greeting = 'Good morning';
+      greeting = 'Good morning,';
     } else if (hour < 18) {
-      greeting = 'Good afternoon';
+      greeting = 'Good afternoon,';
     } else {
-      greeting = 'Good evening';
+      greeting = 'Good evening,';
     }
     const message = `${greeting} ${guest.first_name} ${guest.last_name}, your room number is ${guest.room_number} at ${hotel.company}. Please let us know if there is anything we can do to improve your stay.`;
     setMessages((prevMessages) => [...prevMessages, message]);
