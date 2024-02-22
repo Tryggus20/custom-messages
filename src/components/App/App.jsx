@@ -22,7 +22,18 @@ function App() {
       alert("Please select both a guest and a hotel.");
       return;
     }
-    const message = `Hello ${guest.first_name} ${guest.last_name}, your room number is ${guest.room_number} at ${hotel.company}.`;
+    const checkInDate = new Date(guest?.start_timestamp * 1000);
+    const formatter = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, timeZone: hotel?.timezone });
+    const hour = parseInt(formatter.format(checkInDate), 10);
+    let greeting;
+    if (hour < 12) {
+      greeting = 'Good morning';
+    } else if (hour < 18) {
+      greeting = 'Good afternoon';
+    } else {
+      greeting = 'Good evening';
+    }
+    const message = `${greeting} ${guest.first_name} ${guest.last_name}, your room number is ${guest.room_number} at ${hotel.company}.`;
     setMessages((prevMessages) => [...prevMessages, message]);
   };
   // for custom message, if no time, say hello. otherwise populate with good morning, afternoon, evening
