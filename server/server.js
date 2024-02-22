@@ -14,13 +14,11 @@ app.listen(PORT, () => {
 });
 
 // Was planning on making routers for this project but decided not to due to the simplicity
-
-// decided to order by DESC so the newest guest would show up on top
+// odd interaction happened when sorted by id desc with the drop down selector
 app.get("/guests", (req, res) => {
     const query = `SELECT g.*, r.room_number, r.start_timestamp, r.end_timestamp
                    FROM guests g
-                   JOIN reservations r ON g.id = r.guest_id
-                   ORDER BY g.id DESC;`;
+                   JOIN reservations r ON g.id = r.guest_id;`;
     pool.query(query)
       .then((result) => {
         res.send(result.rows);
