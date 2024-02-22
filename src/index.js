@@ -1,21 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import App from "./components/App/App";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import logger from "redux-logger";
-import watcherSaga from "./redux/sagas/_root.saga";
-import rootReducer from "./redux/reducers/_root.reducer";
+import watcherSaga from "./redux/_root.saga";
+import rootReducer from "./redux/_root.reducer";
 import createSagaMiddleware from "redux-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
+ 
   rootReducer,
-  applyMiddleware(sagaMiddleware, logger)
+  applyMiddleware(sagaMiddleware)
 );
-
+sagaMiddleware.run(watcherSaga);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
