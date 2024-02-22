@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+
 function App() {
   const dispatch = useDispatch();
   const guests = useSelector((store) => store.guests);
@@ -33,13 +34,14 @@ function App() {
     } else {
       greeting = 'Good evening';
     }
-    const message = `${greeting} ${guest.first_name} ${guest.last_name}, your room number is ${guest.room_number} at ${hotel.company}.`;
+    const message = `${greeting} ${guest.first_name} ${guest.last_name}, your room number is ${guest.room_number} at ${hotel.company}. Please let us know if there is anything we can do to improve your stay.`;
     setMessages((prevMessages) => [...prevMessages, message]);
   };
   // for custom message, if no time, say hello. otherwise populate with good morning, afternoon, evening
   // REMINDER: TODO: translate to correct time (and timezone)
   return (
     <div>
+      <h1>Message Generator</h1>
       <select
         value={selectedGuest}
         onChange={(e) => setSelectedGuest(e.target.value)}
@@ -73,7 +75,7 @@ function App() {
       </select>
 
       <button onClick={sendMessage}>Send Message</button>
-      <br />
+      <hr />
 
       {/* Display messages */}
       <ul>
