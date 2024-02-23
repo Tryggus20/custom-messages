@@ -14,7 +14,6 @@ app.listen(PORT, () => {
 });
 
 // Was planning on making routers for this project but decided not to due to the simplicity
-// odd interaction happened when sorted by id desc with the drop down selector
 app.get("/guests", (req, res) => {
     const query = `SELECT g.*, r.room_number, r.start_timestamp, r.end_timestamp
                    FROM guests g

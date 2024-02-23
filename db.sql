@@ -1,3 +1,5 @@
+-- Create a new database named "messages" (without the quotes)
+-- copy and paste all of the code below and execute each statement one at a time
 CREATE TABLE guests (
   id INT PRIMARY KEY,
   first_name VARCHAR(255) NOT NULL,
@@ -45,11 +47,4 @@ INSERT INTO reservations (guest_id, room_number, start_timestamp, end_timestamp)
 (4, 417, 1486614763, 1486832543),
 (5, 194, 1486605110, 1486785126),
 (6, 349, 1486660637, 1486788273);
-
--- For later...
-SELECT g.*, r.room_number, r.start_timestamp, r.end_timestamp
-FROM guests g
-JOIN reservations r ON g.id = r.guest_id;
-
-Select * from hotels;
 
